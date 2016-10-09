@@ -28,7 +28,7 @@
 		<div class="row">
 			<div class="col-lg-3 col-md-3"></div>
 			<div class="col-lg-6 col-md-6">
-				<form id = "registerform">
+				<form id="registerform">
 					<h4>User Information</h4>
 					<input type="text" class="form-control" name="fname" placeholder="First Name" /><br />
 					<input type="text" class="form-control" name="lname" placeholder="Last Name" /><br />

@@ -83,9 +83,6 @@
 			</div>
 		</div>
 	
-
-
-
     <!-- Portfolio Grid Section -->
     <section id="portfolio">
 
@@ -98,27 +95,27 @@
             </div>
             <div class="row">
                 <div class="w3-content w3-section" style="max-width:500px; display: block; margin: auto; ">
-<img class="mySlides" src="img/portfolio/1.jpg" style="width:100%">
-<img class="mySlides" src="img/portfolio/2.jpg" style="width:100%">
-<img class="mySlides" src="img/portfolio/3.jpg" style="width:100%">
-</div>
+            <img class="mySlides" src="img/portfolio/1.jpg" style="width:100%">
+            <img class="mySlides" src="img/portfolio/2.jpg" style="width:100%">
+            <img class="mySlides" src="img/portfolio/3.jpg" style="width:100%">
+            </div>
 
-<script>
-var myIndex = 0;
-carousel();
+        <script>
+        var myIndex = 0;
+        carousel();
 
-function carousel() {
-    var i;
-    var x = document.getElementsByClassName("mySlides");
-    for (i = 0; i < x.length; i++) {
-       x[i].style.display = "none";
-    }
-    myIndex++;
-    if (myIndex > x.length) {myIndex = 1}
-    x[myIndex-1].style.display = "block";
-    setTimeout(carousel, 2000); // Change image every 2 seconds
-}
-</script>
+        function carousel() {
+            var i;
+            var x = document.getElementsByClassName("mySlides");
+            for (i = 0; i < x.length; i++) {
+               x[i].style.display = "none";
+            }
+            myIndex++;
+            if (myIndex > x.length) {myIndex = 1}
+            x[myIndex-1].style.display = "block";
+            setTimeout(carousel, 2000); // Change image every 2 seconds
+        }
+        </script>
     </section>
 
     <!-- About Section -->
@@ -163,7 +160,7 @@ function carousel() {
                 <div class="col-lg-8 col-lg-offset-2">
                     <!-- To configure the contact form email address, go to mail/contact_me.php and update the email address in the PHP file on line 19. -->
                     <!-- The form should work on most web servers, but if the form is not working you may need to configure your web server differently. -->
-                    <form name="sentMessage" id="contactForm" novalidate>
+                    <form name="sentMessage" id="contactForm">
                         <div class="row control-group">
                             <div class="form-group col-xs-12 floating-label-form-group controls">
                                 <label>Name</label>

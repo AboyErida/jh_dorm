@@ -66,4 +66,13 @@
 			//return the query result
 			
 		}
+
+		function updatequery($sqlstr) {
+			if(!$this->mysqli->query($sqlstr)){
+				echo "Query failed: (" . $this->mysqli->errno . ") " . $this->mysqli->error;
+				return false;
+			}else{
+				return true;
+			}
+		}
 	}

@@ -7,6 +7,22 @@
 	
 	$result = $obj->getUserID($_SESSION["user"]);
 	$user_account = $obj->getAccount($result['id']);
+
+    if(isset($_POST['submit_pass']))
+    {
+        $cur_pass = SHA1($_POST['c_pass']);
+        $new_pass = SHA1($_POST['n_pass']);
+        
+        $query = $obj->checkPassword($result['id']);
+        if($query['password'] == $cur_pass) {
+            $obj->changePass($result['id'], $new_pass);
+            $message = "Password successfully changed!";
+            echo "<script type='text/javascript'>alert('$message'); window.location='home.php' </script>";
+        } else {
+            $message = "Incorrect old password.";
+            echo "<script type='text/javascript'>alert('$message'); </script>";
+        }
+    }
 ?>
 
 <body id="page-top" class="index">
@@ -73,8 +89,37 @@
 			<p>My Monthly Bill</p>
 			<h3>P<?php echo number_format($user_account['bill'], 2); ?></h3>
 		</div>
-		<div class="col-md-3 col-lg-3"><a href="ViewRS.php">View Payment History</a></div>
-		<div class="col-md-3 col-lg-3"><a href="EditPass.php">Edit Password</a></div>
+		
+		<!-- Modal -->
+		<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                        <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">Change Password</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form method="post" action="">
+                            <input type="password" placeholder="Enter Old Password" name="c_pass" class="form-control" /><br/>
+                            <input type="password" placeholder="Enter New Password" name="n_pass" class="form-control"  id="mypass"/><br/>
+                            <input type="password" placeholder="Confirm New Password" name="n_pass2" class="form-control" id="re_mypass"/><br/>
+                            <input type="submit" name="submit_pass" value="Change Password" class="btn btn-info btn-block" />
+                            <button type="button" class="btn btn-primary btn-block" data-dismiss="modal">Close</button>
+                        </form>
+                        <div id="pass_error"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+		
+		<div class="col-md-3 col-lg-3">
+			<a href="ViewRS.php" class="btn btn-primary btn-lg" >View Payment History</a>
+		</div>
+		
+		<div class="col-md-3 col-lg-3">
+			<a href="#" data-toggle="modal" class="btn btn-primary btn-lg" data-target="#myModal">Edit Password</a>
+		</div>
+		
 		<br>
 		<br>
 		<br>

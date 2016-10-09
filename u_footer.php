@@ -52,7 +52,8 @@
 	
 	<!-- jQuery -->
     <script src="vendor/jquery/jquery.min.js"></script>
-	
+
+
     <!-- Bootstrap Core JavaScript -->
     <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
 
@@ -65,6 +66,33 @@
 	<script src="js/aboy.js"></script>
     <!-- Theme JavaScript -->
     <script src="js/freelancer.min.js"></script>
+
+    <script src="js/locales.js"></script>
+    <script src="js/passfield.js"></script>
+
+    <script>
+        $("#mypass").passField({
+            allowEmpty: false,
+            allowAnyChars: false,
+            isMasked: false,
+            showGenerate: false
+        });
+
+        function checkPasswordMatch() {
+            var password = $("#mypass").val();
+            var confirmPassword = $("#re_mypass").val();
+
+            if (password != confirmPassword)
+                $("#pass_error").html("New and Confirm Password does not match!");
+            else
+                $("#pass_error").html("Passwords match.");
+        }
+
+        $(document).ready(function () {
+           $("#mypass, #re_mypass").keyup(checkPasswordMatch);
+        });
+    </script>
+
 
 </body>
 

@@ -8,6 +8,13 @@
 			$this->db = new Database();
 			$this->db->initialize();
 		}
+
+		function checkPassword($user_id) {
+			$sqlstr = "SELECT password FROM users WHERE id='$user_id'";
+			$result = $this->db->selectquery($sqlstr);
+			
+			return mysqli_fetch_assoc($result);
+		}
 		
 		function addUser($fname,$lname,$email,$telno,$username,$password){
 			/*$val = array("fname"=>$fname,
@@ -42,7 +49,7 @@
 		//this will check if the user exists
 		//if the user exist return true, else false
 		function login($username,$password) {
-			$sqlstr = "SELECT * FROM users WHERE username='$username'";
+			$sqlstr = "SELECT username, password FROM users WHERE username='$username' AND password='$password'";
 			
 			$result = $this->db->selectquery($sqlstr);
 			if($result->num_rows >0){
@@ -51,6 +58,13 @@
 			else{
 				return false;
 			}
+		}
+
+		function changePass($user_id,$new_pass) {
+			$sqlstr = "UPDATE users SET password='$new_pass' WHERE id='$user_id'";
+			$result = $this->db->updatequery($sqlstr);
+			
+			return $result;
 		}
 		
 		//return the list of all active users
