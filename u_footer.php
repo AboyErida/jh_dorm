@@ -52,8 +52,7 @@
 	
 	<!-- jQuery -->
     <script src="vendor/jquery/jquery.min.js"></script>
-
-
+    
     <!-- Bootstrap Core JavaScript -->
     <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
 
@@ -70,12 +69,18 @@
     <script src="js/locales.js"></script>
     <script src="js/passfield.js"></script>
 
+    <script src="js/jquery.dataTables.min.js"></script>
+
     <script>
         $("#mypass").passField({
             allowEmpty: false,
             allowAnyChars: false,
             isMasked: false,
             showGenerate: false
+        });
+
+        $(document).ready(function(){
+            $('#his_table').DataTable();
         });
 
         function checkPasswordMatch() {

@@ -7,7 +7,11 @@
 	
 	$result = $obj->getUserID($_SESSION["user"]);
 	$user_account = $obj->getAccount($result['id']);
+    $user_history = $obj->getHistory($result['id']);
 
+    //var_dump($user_history);
+    //print_r($user_history);
+    
     if(isset($_POST['submit_pass']))
     {
         $cur_pass = SHA1($_POST['c_pass']);
@@ -94,7 +98,7 @@
 		<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
-                        <div class="modal-header">
+                    <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                         <h4 class="modal-title" id="myModalLabel">Change Password</h4>
                     </div>
@@ -112,8 +116,40 @@
             </div>
         </div>
 		
+        <!-- Modal -->
+        <div class="modal fade" id="pay_hist" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel2">Payment History</h4>
+                    </div>
+                    <div class="modal-body modal-resize">
+                        <table id="his_table" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                            <thead>
+                                <th>Amount Paid</th>
+                                <th>Date</th>
+                            </thead>
+                            <tbody>
+                            <?php 
+                            foreach($user_history as $row) {
+                            ?>
+                                <tr>
+                                    <td>P<?php echo number_format($row['amount'],2); ?></td>
+                                    <td><?php echo $row['date']; ?></td>
+                                </tr>
+                            </td>
+                            <?php 
+                            }
+                            ?>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
 		<div class="col-md-3 col-lg-3">
-			<a href="ViewRS.php" class="btn btn-primary btn-lg" >View Payment History</a>
+			<a href="#" data-toggle="modal" class="btn btn-primary btn-lg" data-target="#pay_hist">View Payment History</a>
 		</div>
 		
 		<div class="col-md-3 col-lg-3">

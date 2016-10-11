@@ -22,10 +22,18 @@ include('/class/member.php');
 			$message = "Fill up fields properly. Go back to login page";
 			echo "<script type='text/javascript'>alert('$message');  window.location = 'index.php'</script>";
 		}else{
-			if($obj->login($user,$pass)){
+			$verify = $obj->login($user,$pass);
+
+			if($verify){
 				$_SESSION["LOGGEDIN"] = true;
 				$_SESSION["user"] = $user;
-				header('Location:home.php');
+
+				if($verify['type'] == "admin") {
+					header('Location:admin/index.php');
+				}
+				else {
+					header('Location:home.php');
+				}
 			}else{
 				$message = "Username and/or Password incorrect.\\nTry again.";
 				echo "<script type='text/javascript'>alert('$message');  window.location = 'index.php'</script>";

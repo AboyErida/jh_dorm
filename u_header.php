@@ -21,6 +21,7 @@
     <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="css/font1.css" rel="stylesheet" type="text/css">
     <link href="css/font2.css" rel="stylesheet" type="text/css">
+    <link href="css/jquery.dataTables.min.css" rel="stylesheet" type="text/css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -30,4 +31,3 @@
     <![endif]-->
 
 </head>
-

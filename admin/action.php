@@ -1,6 +1,6 @@
 <?php
-	include('/class/member.php');
-	$obj = new Members();
+	include('../class/member.php');
+	$obj = new Admin();
 	
 	if(isset($_REQUEST['stat'])){
 		$fname = $_REQUEST['fname'];
@@ -12,7 +12,7 @@
 		
 		$obj->addUser($fname,$lname,$email,$telno,$username,$password);
 	}
-		
+	
 	function displayusers(){
 		Global $obj;
 		
