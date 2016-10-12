@@ -8,9 +8,6 @@
 	$result = $obj->getUserID($_SESSION["user"]);
 	$user_account = $obj->getAccount($result['id']);
     $user_history = $obj->getHistory($result['id']);
-
-    //var_dump($user_history);
-    //print_r($user_history);
     
     if(isset($_POST['submit_pass']))
     {
@@ -49,7 +46,7 @@
                         <a href="#page-top"></a>
                     </li>
 					  <li class="page-scroll">
-                        <a href="index.php">Logout</a>
+                        <a href="index.php?logout">Logout</a>
                     </li>
                     <li class="page-scroll">
                         <a href="#register">Register</a>
@@ -131,17 +128,13 @@
                                 <th>Date</th>
                             </thead>
                             <tbody>
-                            <?php 
-                            foreach($user_history as $row) {
-                            ?>
+                            <?php foreach($user_history as $row) { ?>
                                 <tr>
                                     <td>P<?php echo number_format($row['amount'],2); ?></td>
                                     <td><?php echo $row['date']; ?></td>
                                 </tr>
-                            </td>
-                            <?php 
-                            }
-                            ?>
+                            <?php } ?>
+                            </tbody>
                         </table>
                     </div>
                 </div>
@@ -185,10 +178,7 @@
                         <a href="#page-top"></a>
                     </li>
 					  <li class="page-scroll">
-                        <a href="index.php">Logout</a>
-                    </li>
-						<li class="page-scroll">
-                        <a href="#register">Register</a>
+                        <a href="index.php?logout">Logout</a>
                     </li>
                 </ul>
             </div>

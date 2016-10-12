@@ -1,7 +1,19 @@
+<?php 
+    session_start(); 
+
+    if(!isset($_SESSION['LOGGEDIN']) && !strstr($_SERVER['PHP_SELF'], "index.php")) {        
+        header('location: index.php');
+    }
+    
+    if(isset($_GET['logout'])) {
+        session_destroy();
+        header('location: index.php');
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<?php session_start(); ?>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">

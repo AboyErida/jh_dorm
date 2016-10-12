@@ -23,7 +23,6 @@
 						<button id="submit" class="btn btn-success">Add</button>
 					</form>
 				</div>
-				
 			</div>
             <!-- /.row -->
         </div>

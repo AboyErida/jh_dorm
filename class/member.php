@@ -106,4 +106,32 @@
 				}
 			}
 		}
+
+		function getTenants() {
+			$sqlstr = "SELECT id, fname, lname FROM users WHERE type='user'";
+			$result = $this->db->selectquery($sqlstr);
+			
+			return mysqli_fetch_all($result, MYSQLI_ASSOC);
+		}
+
+		function getUser($user_id) {
+			$sqlstr = "SELECT fname, lname FROM users WHERE id='$user_id'";
+			$result = $this->db->selectquery($sqlstr);
+			
+			return mysqli_fetch_assoc($result);
+		}
+
+		function insertAmount($user_id, $amt, $date) {
+			$sqlstr = "INSERT INTO history(h_id, amount, date) VALUES('$user_id', '$amt', '$date')";
+			$result = $this->db->insertquery($sqlstr);
+
+			return $result;
+		}
+
+		function getHistory($user_id) {
+			$sqlstr = "SELECT * FROM history WHERE h_id='$user_id'";
+			$result = $this->db->selectquery($sqlstr);
+			
+			return mysqli_fetch_all($result,MYSQLI_ASSOC);
+		}
 	}
